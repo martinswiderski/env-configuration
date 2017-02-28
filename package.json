@@ -1,6 +1,6 @@
 {
   "name": "env-configuration",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Configuration manager feeding values from Env Vars and driven by objects or JSON files",
   "main": "index.js",
   "repository": {
