@@ -11,6 +11,9 @@
   "maintainers": [
     "Martin Swiderski <codebloke@gmail.com>"
   ],
+  "engines": {
+    "node": "0.32.x"
+  },
   "licenses": [
     {
       "type": "MIT",

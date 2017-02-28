@@ -6,7 +6,10 @@ Configuration management tool feeding values from environment variables, files a
 ## Version
 0.1.0
 
-@codebloke Travis
+
+[![Build Status](https://travis-ci.org/martinswiderski/env-configuration.svg?branch=master)](https://travis-ci.org/martinswiderski/env-configuration)
+
+Post all your comments and bug reports to @martinswiderski
 
 ## Installation
 
