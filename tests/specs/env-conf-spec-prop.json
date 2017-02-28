@@ -1,0 +1,10 @@
+{
+  "myHomeDirectory": {
+    "source": "environment",
+    "reference": "HOME"
+  },
+  "foo": {
+    "source": "declaration",
+    "reference": "bar"
+  }
+}

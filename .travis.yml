@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+    - stable
+    - "0.1.0"
+
+notifications:
+  email: false
+
+cache:
+    directories:
+        - node_modules
+
+sudo: false

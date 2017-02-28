@@ -1,0 +1,53 @@
+{
+  "name": "env-configuration",
+  "version": "0.0.1",
+  "description": "Configuration manager feeding values from Env Vars and driven by objects or JSON files",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://codebloke@bitbucket.org/codebloke/env-configuration.git"
+  },
+  "author": "Martin Swiderski <codebloke@gmail.com> (http://codebloke.wordpress.com/)",
+  "maintainers": [
+    "Martin Swiderski <codebloke@gmail.com>"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "SEE LICENSE IN LICENSE"
+    }
+  ],
+  "scripts": {
+    "test": "jasmine-node tests/",
+    "jslint": "jslint index.js src/*.js"
+  },
+  "dependencies": {
+    "jasmine-node": "^1.14.5",
+    "jsonpath": "^0.2.11",
+    "md5": "^2.0.0",
+    "sha1": "^1.1.1",
+    "system": "0.1.0",
+    "unix-time": "^1.0.1",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "jslint": "^0.7.2",
+    "mocha": "^2.3.4",
+    "standard": "^5.4.1"
+  },
+  "bugs": {
+    "url": "https://bitbucket.org/codebloke/env-configuration/issues?status=new&status=open"
+  },
+  "homepage": "https://bitbucket.org/codebloke/env-configuration",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [
+    "config",
+    "configuration",
+    "env vars",
+    "environment",
+    "variables"
+  ],
+  "license": "MIT"
+}
