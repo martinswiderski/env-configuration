@@ -4,7 +4,7 @@ var fs = require('fs'),
     rp = require('fs.realpath'),
     uuid = require('uuid'),
     confId = '',
-    k, v, msg = '',
+    k, v,
     fromJson = {},
     errMessage = {},
     expected,
@@ -26,11 +26,11 @@ errMessage = {
 
 function uniqueId() {
     return (uuid.v1()).split('-').join('').toUpperCase();
-};
+}
 
 function getType(subject) {
     return (null === subject) ? 'null' : typeof subject;
-};
+}
 
 function getObjectName(obj) {
     return (getType(obj) !== 'object') ? '' : obj.constructor.name;
@@ -45,7 +45,7 @@ function getSingleton(container) {
         container.unique = container.obj.getSignature();
     }
     return container.obj;
-};
+}
 
 
 function EnvConfigurationError(message) {
@@ -53,15 +53,14 @@ function EnvConfigurationError(message) {
     Error.captureStackTrace(this, this.constructor);
     this.name = this.constructor.name;
     this.message = message;
-};
+}
 
 function PackageJsonError(message) {
     this.constructor.prototype.__proto__ = Error.prototype;
     Error.captureStackTrace(this, this.constructor);
     this.name = this.constructor.name;
     this.message = message;
-};
-
+}
 
 function PackageJson() {
     this.jp   = require('jsonpath');
@@ -69,7 +68,7 @@ function PackageJson() {
     this.load = function(file) {
         if (fs.existsSync(file) !== true) {
             if (this.opt.errors === 'throw') {
-                throw new EnvConfigurationError(errMessage.jsonDoesNotExist);
+                throw new PackageJsonError(errMessage.jsonDoesNotExist);
             } else {
                 this.errors.push(errMessage.jsonDoesNotExist);
             }
@@ -84,7 +83,7 @@ function PackageJson() {
         }
         return fetched;
     };
-};
+}
 
 function EnvConfiguration() {
 
@@ -201,7 +200,7 @@ function EnvConfiguration() {
             }
         }
         return this.errors.length === 0; // errors empty
-    }
-};
+    };
+}
 
 module.exports = getSingleton(instance);
