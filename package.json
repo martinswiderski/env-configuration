@@ -1,6 +1,6 @@
 {
   "name": "env-configuration",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Configuration manager feeding values from Env Vars and driven by objects or JSON files",
   "main": "index.js",
   "repository": {
@@ -25,6 +25,7 @@
     "jslint": "jslint index.js src/*.js"
   },
   "dependencies": {
+    "fs.realpath": "^1.0.0",
     "jasmine-node": "^1.14.5",
     "jsonpath": "^0.2.11",
     "md5": "^2.0.0",

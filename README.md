@@ -4,7 +4,7 @@ NodeJS configuration set/get and reader for package.json data
 Configuration management tool feeding values from environment variables, files and code.
 
 ## Version
-0.1.0
+0.1.2
 
 
 [![Build Status](https://travis-ci.org/martinswiderski/env-configuration.svg?branch=master)](https://travis-ci.org/martinswiderski/env-configuration)
