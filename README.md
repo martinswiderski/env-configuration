@@ -4,7 +4,7 @@ NodeJS configuration set/get and reader for package.json data
 Configuration management tool feeding values from environment variables, files and code.
 
 ## Version
-0.0.1 beta
+0.1.0
 
 @codebloke Travis
 
