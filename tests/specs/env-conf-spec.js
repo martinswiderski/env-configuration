@@ -1,4 +1,7 @@
-var configuration = require(__dirname + '/../../index').readPackage(__dirname + '/../../package.json'); // this is how other modules will load it
+'use strict';
+
+var _typeof = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj; },
+    configuration = require(__dirname + '/../../index').readPackage(__dirname + '/../../package.json'); // this is how other modules will load it
 
 describe('If pointed at file it reads package.json if passed', function () {
     it('and makes it ready for json path queries', function () {
@@ -33,14 +36,12 @@ describe('If passed an object it reads it and sets values', function () {
 
 configuration.loadJSON(__dirname + '/env-conf-spec-prop.json');
 
-
 describe('If passed a file it reads it and sets values', function () {
     it('from environment vars', function () {
         expect(configuration.get('myHomeDirectory')).toBe(process.env['HOME']);
-        expect(typeof configuration.get('myHomeDirectory')).toBe('string');
+        expect(_typeof(configuration.get('myHomeDirectory'))).toBe('string');
     });
     it('and declared values', function () {
         expect(configuration.get('foo')).toBe('bar');
     });
 });
-
