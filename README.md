@@ -4,7 +4,7 @@ NodeJS configuration set/get and reader for package.json data
 Configuration management tool feeding values from environment variables, files and code.
 
 ## Version
-0.1.2
+0.1.3
 
 
 [![Build Status](https://travis-ci.org/martinswiderski/env-configuration.svg?branch=master)](https://travis-ci.org/martinswiderski/env-configuration)
@@ -62,6 +62,10 @@ config.loadObject({
     system: {
         source: 'declaration',  // sets value below as declared here
         reference: 'my system name'
+    },
+    json_config: {
+        source: 'declaration',
+        reference: '{"hello":"world","iam":{"many":"names"}}' // JSON as string
     }
 });
 ```
@@ -77,12 +81,36 @@ You can drive config from **JSON** and from **object**. merging configs from mul
 
 ### Getting application config values
 
-Call get method:
+Calling get with a declared function:
+
+```javascript
+    console.log(configuration.get('json_config', JSON.parse));
+    { hello: 'world', iam: { many: 'names' } }
+```
+Calling get with a anonymous function:
+
+```javascript
+    // no callback
+    console.log(configuration.get('system'));
+    hard-coded-value
+    
+    // callback added
+    console.log(configuration.get('system', function(contents){
+        return contents.toUpperCase();
+    }));
+    HARD-CODED-VALUE
+```
+
+### Getting application config values processed with a callback
+
+Get (from 0.1.3) supports a callback:
 
 ```javascript
     console.log(config.get('proxy'));
     http://yourProxy:8080
 ```
+
+
 
 ### Getting values from package.json
 
@@ -90,7 +118,7 @@ Call get method:
 
 ```javascript
     console.log(config.package.jsonpath('$..dependencies.system'));
-    0.1.0
+    0.1.3
 ```
 
 ### Ensuring config is valid
