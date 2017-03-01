@@ -1,7 +1,9 @@
 'use strict';
 
 var _typeof = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj; },
-    configuration = require(__dirname + '/../../index').readPackage(__dirname + '/../../package.json'); // this is how other modules will load it
+    configuration = require(__dirname + '/../../index').readPackage(__dirname + '/../../package.json'), // this is how other modules will load it
+    str = '',
+    obj = {};
 
 describe('If pointed at file it reads package.json if passed', function () {
     it('and makes it ready for json path queries', function () {
@@ -21,6 +23,10 @@ configuration.loadObject({
     system: {
         source: 'declaration',
         reference: 'hard-coded-value'
+    },
+    json_config: {
+        source: 'declaration',
+        reference: '{"hello":"world","iam":{"many":"names"}}' // JSON as string
     }
 });
 
@@ -43,5 +49,16 @@ describe('If passed a file it reads it and sets values', function () {
     });
     it('and declared values', function () {
         expect(configuration.get('foo')).toBe('bar');
+    });
+});
+
+describe('If obj.get() is passed with a function as 2nd parameter', function () {
+    it('it will use it to prepare value returned', function () {
+        expect((configuration.get('json_config', JSON.parse)).hello).toBe('world');
+        expect((configuration.get('json_config', JSON.parse)).iam.many).toBe('names');
+        expect(configuration.get('system')).toBe('hard-coded-value');
+        expect(configuration.get('system', function(contents){
+            return contents.toUpperCase();
+        })).toBe('HARD-CODED-VALUE');
     });
 });

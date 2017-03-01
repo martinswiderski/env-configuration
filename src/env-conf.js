@@ -134,8 +134,8 @@ function EnvConfiguration() {
         return this;
     };
 
-    this.get = function (k) {
-        return !this.items[k] ? null : this.items[k];
+    this.get = function (k, callback) {
+        return (getType(callback) !== 'function') ? !this.items[k] ? null : this.items[k] : callback(!this.items[k] ? null : this.items[k]);
     };
 
     this.set = function (key, source, reference) {
